@@ -44,11 +44,18 @@
 /* Center all submit buttons including provider buttons */
 input[type="submit"], 
 button[type="submit"],
-.pf-c-button {
+.pf-c-button.pf-m-primary {
     display: block !important;
     width: 100% !important;
     margin: 0 auto !important;
     text-align: center !important;
+}
+
+/* Exclude password visibility buttons */
+.pf-c-input-group .pf-c-button {
+    display: inline-flex !important;
+    width: auto !important;
+    margin: 0 !important;
 }
 
 /* Fix provider form layout */
@@ -84,5 +91,7 @@ button[type="submit"],
 #kc-content-wrapper {
     max-width: 100% !important;
 }
+
+
 
 
