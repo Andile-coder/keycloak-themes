@@ -27,10 +27,10 @@ jobs:
         
     - name: Deploy repo to EC2
       run: |
-        # Sync entire repo to EC2
-        rsync -avz --delete ./ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:~/keycloak-themes/
+        # Sync repo to EC2 (exclude git and temp files)
+        rsync -avz --delete --exclude='.git' --exclude='*.jar' --exclude='.DS_Store' ./ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:~/keycloak-themes/ || true
         
         ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
           echo "✅ Repository synced to ~/keycloak-themes/"
-          ls -la ~/keycloak-themes/
+          ls -la ~/keycloak-themes/fasttrack-theme/
         EOF
